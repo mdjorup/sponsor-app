@@ -24,6 +24,9 @@ const NewListingPage = async ({
 
   if (entityId) {
     entity = await getEntityById(entityId as string);
+    if (entity?.user_id !== userId) {
+      redirect("/listings");
+    }
   }
 
   return (
