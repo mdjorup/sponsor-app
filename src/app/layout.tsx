@@ -32,7 +32,9 @@ export default function RootLayout({
           )}
         >
           <Header />
-          {children}
+          <div className="px-4 sm:px-10 md:px-16 lg:px-22 xl:px-32">
+            {children}
+          </div>
         </body>
       </html>
     </ClerkProvider>

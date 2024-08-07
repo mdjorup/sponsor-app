@@ -12,7 +12,7 @@ import {
 
 const Header = () => {
   return (
-    <div className="w-full flex h-16 border px-5">
+    <div className="w-full flex h-16 border-b px-5 mb-5">
       <div className="flex-1 flex justify-start items-center">
         <Link href={"/"}>
           <Image
