@@ -3,8 +3,8 @@ export type UUID = string;
 export interface User {
   id: UUID;
   email: string;
-  created_at: string; // ISO 8601 date string
-  updated_at: string; // ISO 8601 date string
+  created_at: Date; // ISO 8601 date string
+  updated_at: Date; // ISO 8601 date string
 }
 
 export interface Entity {
@@ -14,8 +14,8 @@ export interface Entity {
   description?: string;
   type: string;
   link: string;
-  created_at: string; // ISO 8601 date string
-  updated_at: string; // ISO 8601 date string
+  created_at: Date; // ISO 8601 date string
+  updated_at: Date; // ISO 8601 date string
 }
 
 export interface Listing {
@@ -26,8 +26,8 @@ export interface Listing {
   reserve_price: number; // assuming it will be handled as a number in JavaScript
   end_date: string; // ISO 8601 date string
   status: string;
-  created_at: string; // ISO 8601 date string
-  updated_at: string; // ISO 8601 date string
+  created_at: Date; // ISO 8601 date string
+  updated_at: Date; // ISO 8601 date string
 }
 
 export interface Bid {
@@ -35,6 +35,6 @@ export interface Bid {
   listing_id: UUID;
   bidding_entity_id: UUID;
   amount: number; // assuming it will be handled as a number in JavaScript
-  created_at: string; // ISO 8601 date string
-  updated_at: string; // ISO 8601 date string
+  created_at: Date; // ISO 8601 date string
+  updated_at: Date; // ISO 8601 date string
 }
