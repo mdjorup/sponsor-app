@@ -22,7 +22,6 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      {" "}
       <html lang="en" suppressHydrationWarning>
         <head />
         <body
