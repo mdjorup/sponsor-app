@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { H2 } from "@/components/ui/typography";
+import { H2, P } from "@/components/ui/typography";
 
 export default function Home() {
   return (
@@ -14,8 +14,10 @@ export default function Home() {
             <CardTitle>Welcome to Sponsor Hunt!</CardTitle>
           </CardHeader>
           <CardContent>
-            Sponsor Hunt is a platform for finding sponsors for your projects.
-            It is a work in progress and is not yet ready for public use.
+            <P>
+              Sponsor Hunt is a platform for finding sponsors for your projects.
+              It is a work in progress and is not yet ready for public use.
+            </P>
           </CardContent>
         </Card>
       </div>

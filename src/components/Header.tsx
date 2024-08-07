@@ -38,7 +38,14 @@ const Header = () => {
             <NavigationMenuItem>
               <Link href="/entities" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Entities
+                  Products
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href="/blog" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Blog
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
