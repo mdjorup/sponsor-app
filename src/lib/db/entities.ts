@@ -1,5 +1,6 @@
 import { query } from "../pool";
 import { Entity } from "../types";
+import { getUserId } from "./auth";
 
 export const getEntityById = async (id: string) => {
   const entityResponse = await query<Entity>(
@@ -16,6 +17,19 @@ export const getEntityById = async (id: string) => {
 
 export const getAllEntities = async () => {
   const entitiesResponse = await query<Entity>(`select * from entities`, []);
+
+  return entitiesResponse.rows || [];
+};
+
+export const getUserEntities = async () => {
+  const userId = await getUserId();
+  if (!userId) {
+    return [];
+  }
+  const entitiesResponse = await query<Entity>(
+    `select * from entities where user_id = $1`,
+    [userId],
+  );
 
   return entitiesResponse.rows || [];
 };

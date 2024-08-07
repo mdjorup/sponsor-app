@@ -1,7 +1,7 @@
 import { Button, buttonVariants } from "@/components/ui/button";
 import { CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getAllListings } from "@/lib/db/listings";
-import { SignedOut, SignInButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -30,6 +30,14 @@ const Listings = async () => {
                   <Button variant={"default"}>Sign in</Button>
                 </SignInButton>
               </SignedOut>
+              <SignedIn>
+                <Link
+                  href="/listings/new"
+                  className={buttonVariants({ variant: "default" })}
+                >
+                  Create Listing
+                </Link>
+              </SignedIn>
             </div>
           </CardHeader>
         </div>
