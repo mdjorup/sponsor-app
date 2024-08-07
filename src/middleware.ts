@@ -8,12 +8,9 @@ const isProtectedRoute = createRouteMatcher([
   "/my-bids(.*)",
 ]);
 
-export default clerkMiddleware(
-  (auth, req) => {
-    if (isProtectedRoute(req)) auth().protect();
-  },
-  { debug: true },
-);
+export default clerkMiddleware((auth, req) => {
+  if (isProtectedRoute(req)) auth().protect();
+});
 
 export const config = {
   matcher: [

@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 
+import Header from "@/components/Header";
 import { cn } from "@/lib/utils";
 import { ClerkProvider } from "@clerk/nextjs";
 
@@ -30,6 +31,7 @@ export default function RootLayout({
             fontSans.variable,
           )}
         >
+          <Header />
           {children}
         </body>
       </html>
