@@ -34,3 +34,22 @@ export const verifyUserInDatabase = async () => {
     await createNewUser();
   }
 };
+
+export const getUserId = async () => {
+  const userEmail = await getUserEmail();
+
+  if (!userEmail) {
+    throw new Error("User not found");
+  }
+
+  const userResponse = await query<User>(
+    `select * from users where email = $1`,
+    [userEmail],
+  );
+
+  if (userResponse.rowCount === 0) {
+    return undefined;
+  }
+
+  return userResponse.rows[0].id;
+};
