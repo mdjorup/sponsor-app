@@ -13,3 +13,9 @@ export const getEntityById = async (id: string) => {
 
   return entityResponse.rows[0];
 };
+
+export const getAllEntities = async () => {
+  const entitiesResponse = await query<Entity>(`select * from entities`, []);
+
+  return entitiesResponse.rows || [];
+};

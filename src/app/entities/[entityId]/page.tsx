@@ -18,7 +18,7 @@ const EntityPage = async ({
 
   const userId = await getUserId();
 
-  if (!entity || !userId) {
+  if (!entity) {
     return <UnfountEntityPage />;
   }
 

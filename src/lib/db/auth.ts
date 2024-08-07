@@ -39,7 +39,7 @@ export const getUserId = async () => {
   const userEmail = await getUserEmail();
 
   if (!userEmail) {
-    throw new Error("User not found");
+    return undefined;
   }
 
   const userResponse = await query<User>(
