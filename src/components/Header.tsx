@@ -1,5 +1,5 @@
-import { buttonVariants } from "@/components/ui/button";
-import { SignedIn, SignedOut, UserProfile } from "@clerk/nextjs";
+import { Button } from "@/components/ui/button";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -54,15 +54,12 @@ const Header = () => {
       </div>
       <div className="flex-1 flex justify-end items-center">
         <SignedIn>
-          <UserProfile />
+          <UserButton />
         </SignedIn>
         <SignedOut>
-          <Link
-            href={"/signin"}
-            className={buttonVariants({ variant: "default" })}
-          >
-            Sign In
-          </Link>
+          <SignInButton>
+            <Button variant={"default"}>Sign in</Button>
+          </SignInButton>
         </SignedOut>
       </div>
     </div>
