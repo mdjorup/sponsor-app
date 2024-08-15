@@ -1,8 +1,9 @@
 import NewListingEntitySelector from "@/components/NewListingEntitySelector";
+import NewListingForm from "@/components/NewListingForm";
 import { CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getUserId } from "@/lib/db/auth";
 import { getEntityById } from "@/lib/db/entities";
-import { Entity } from "@/lib/types";
+import { Entity, uuidRegex } from "@/lib/types";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
@@ -17,6 +18,12 @@ const NewListingPage = async ({
 
   // assert entityId is a string
   if (entityId && typeof entityId !== "string") {
+    redirect("/listings");
+  }
+
+  // check that the uuid is valid
+
+  if (entityId && !uuidRegex.test(entityId)) {
     redirect("/listings");
   }
 
@@ -44,7 +51,7 @@ const NewListingPage = async ({
             <NewListingEntitySelector />
           </Suspense>
         ) : (
-          <div>Form</div>
+          <NewListingForm entity={entity} />
         )}
       </div>
     </div>

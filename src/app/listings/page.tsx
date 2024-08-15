@@ -1,12 +1,43 @@
 import { Button, buttonVariants } from "@/components/ui/button";
 import { CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { getAllListings } from "@/lib/db/listings";
+import { getEntityById } from "@/lib/db/entities";
+import { getAllListings, getListingsByEntity } from "@/lib/db/listings";
+import { Entity, Listing, uuidRegex } from "@/lib/types";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
-const Listings = async () => {
-  const listings = await getAllListings();
+const Listings = async ({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) => {
+  const entityId = searchParams.entityId;
+
+  if (entityId && typeof entityId !== "string") {
+    redirect("/listings");
+  }
+
+  if (entityId && !uuidRegex.test(entityId)) {
+    redirect("/listings");
+  }
+
+  let listings: Listing[];
+  let entity: Entity | undefined;
+
+  if (!entityId) {
+    listings = await getAllListings();
+  } else {
+    [entity, listings] = await Promise.all([
+      getEntityById(entityId as string),
+      getListingsByEntity(entityId as string),
+    ]);
+
+    if (!entity) {
+      redirect("/listings");
+    }
+  }
 
   return (
     <div className="h-screen flex gap-8">
@@ -14,7 +45,9 @@ const Listings = async () => {
         <div>
           <CardHeader>
             <CardDescription>Showing all listings</CardDescription>
-            <CardTitle className="text-4xl">Listings</CardTitle>
+            <CardTitle className="text-4xl">
+              {entityId ? `Listings for ${entity?.name}` : "Listings"}
+            </CardTitle>
             <CardDescription>
               Listings are any sponsorships that you can apply for.
             </CardDescription>

@@ -1,5 +1,9 @@
 export type UUID = string;
 
+export const uuidRegex = new RegExp(
+  "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+);
+
 export interface User {
   id: UUID;
   email: string;
@@ -24,6 +28,7 @@ export interface Listing {
   title: string;
   description?: string;
   reserve_price: number; // assuming it will be handled as a number in JavaScript
+  n_winners: number;
   end_date: string; // ISO 8601 date string
   status: string;
   created_at: Date; // ISO 8601 date string

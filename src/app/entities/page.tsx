@@ -1,23 +1,9 @@
 import { Button, buttonVariants } from "@/components/ui/button";
 import { CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getAllEntities } from "@/lib/db/entities";
-import { Entity } from "@/lib/types";
 import { SignedOut, SignInButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-
-interface EntityComponentProps {
-  entity: Entity;
-}
-
-const EntityComponent = ({ entity }: EntityComponentProps) => {
-  return (
-    <div className="p-4">
-      <h2>{entity.name}</h2>
-      <p>{entity.description}</p>
-    </div>
-  );
-};
 
 const Entities = async () => {
   const entities = await getAllEntities();

@@ -26,6 +26,7 @@ create table listings (
     title VARCHAR(255) NOT NULL,
     description TEXT,
     reserve_price numeric(10, 2) not null,
+    n_winners int4 not null default 1,
     end_date TIMESTAMP WITH TIME ZONE not null,
     status VARCHAR(50) DEFAULT 'open',
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
